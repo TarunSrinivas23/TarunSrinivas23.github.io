@@ -1,3 +1,12 @@
 theme: jekyll-theme-minimal
 title: Advanced ML Paper Presentation - Report
 description: Report under construction !
+github_username:  TarunSrinivas23
+
+defaults:
+  - scope:
+      path: "assets/img/post"
+    values:
+      image: true
+
+blog-img-url: "/assets/img/blog/"
