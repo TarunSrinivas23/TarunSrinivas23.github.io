@@ -20,7 +20,7 @@ categories: jekyll update
 
 The paper proceeds to propose a novel self-supervised deep learning model to do just this. Why self-supervised? Well, collecting labelled data when it comes to self driving applications is a very costly and labourous task, which ofcourse involves a LiDAR which we are trying to replace. The authors propose a U-Net type architecture with some unique modifications, **PackNet**. The authors also claim that PackNet competes and also beats some supervised, unsupervised and other self-supervised monocular models. PackNet is also added with weak supervision from the velocity information available in vehicles. This is proposed by the authors to solve the depth "scale issue" which is rampant in these kinds of monocular applications. As we need stereo information to capture proper scale for our depth predictions, the scale issue comes into the picture which they solve using the velocity information from the images.
 
-![The problem definition](../media/images/Picture1.png)
+<img src="{{site.baseurl | prepend: site.url}}media/images/Picture1.png" alt="Test" />
 
 
 # Literature Study
