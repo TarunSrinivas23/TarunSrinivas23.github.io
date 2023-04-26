@@ -30,6 +30,9 @@ github_username:  TarunSrinivas23
 
 # Build settings
 theme: minima
+markdown: kramdown
+kramdown:
+    math_engine: katex
 plugins:
   - jekyll-feed
 
