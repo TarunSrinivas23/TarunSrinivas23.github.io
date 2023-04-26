@@ -188,7 +188,7 @@ Another important aspect of the paper was the loss function. Authors propose a s
 
 <p style="text-align: center;">
 
-<img src="{{site.baseurl | prepend: site.url}}media/images/Picture22.png" alt= "Error lol. I cant really help you" title= "Photometric loss" width = 400 height = 80 />
+<img src="{{site.baseurl | prepend: site.url}}media/images/Picture22.png" alt= "Error lol. I cant really help you" title= "Photometric loss" width = 800 height = 80 />
 
 </p>
 
@@ -203,7 +203,7 @@ The authors define $L_p$ as the photometric loss term,
 
 <p style="text-align: center;">
 
-<img src="{{site.baseurl | prepend: site.url}}media/images/Picture16.png" alt= "Error lol. I cant really help you" title= "Photometric loss" width = 400 height = 80 />
+<img src="{{site.baseurl | prepend: site.url}}media/images/Picture16.png" alt= "Error lol. I cant really help you" title= "Photometric loss" width = 800 height = 80 />
 
 </p>
 
@@ -220,14 +220,14 @@ The objective function is also a combination of different loss terms, masks and 
 
 <p style="text-align: center;">
 
-<img src="{{site.baseurl | prepend: site.url}}media/images/Picture22.png" alt= "Error lol. I cant really help you" title= "Photometric loss" width = 400 height = 80 />
+<img src="{{site.baseurl | prepend: site.url}}media/images/Picture22.png" alt= "Error lol. I cant really help you" title= "Photometric loss" width = 800 height = 80 />
 
 </p>
 
 
 <p style="text-align: center;">
 
-<img src="{{site.baseurl | prepend: site.url}}media/images/Picture18.png" alt= "Error lol. I cant really help you" title= "Auto Masking" width = 400 height = 80 />
+<img src="{{site.baseurl | prepend: site.url}}media/images/Picture18.png" alt= "Error lol. I cant really help you" title= "Auto Masking" width = 800 height = 80 />
 
 </p>
 
