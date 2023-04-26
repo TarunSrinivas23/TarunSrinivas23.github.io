@@ -85,7 +85,7 @@ The architecture that the authors propose is not very different from any other s
 
 </p>
 
-The $I_t$ here is the target image that we wish to predict depth for. And this is passed in through the model and we get an output from PackNet, $\hat D_t$. $I_s$ is the context frames, could be previous frames in our case. $\hat I_t$ here is the "synthesised" target image which is the output from the view synthesis block. $\hat I_t$ and $I_t$ are then used to model the photometric loss to backpropogate and train the model. This is how they propose to avoid labelled data for training. We will see this in much more depth further down the blog though.
+The $$I_t$$ here is the target image that we wish to predict depth for. And this is passed in through the model and we get an output from PackNet, $$\hat D_t$$. $$I_s$$ is the context frames, could be previous frames in our case. $$\hat I_t$$ here is the "synthesised" target image which is the output from the view synthesis block. $$\hat I_t$$ and $$I_t$$ are then used to model the photometric loss to backpropogate and train the model. This is how they propose to avoid labelled data for training. We will see this in much more depth further down the blog though.
 
 ## Experiments
 
@@ -161,7 +161,7 @@ This pointcloud is then passed on to a block called "**View-Synthesis**" which p
 Predicts the transformation matrix between two context frames in the video. The authors use the architecture proposed by [Tinghui Zhou,
 Matthew Brown et al.](https://openaccess.thecvf.com/content_cvpr_2017/papers/Zhou_Unsupervised_Learning_of_CVPR_2017_paper.pdf) . It is a 7-layer convolutional network, ending with a 1x1 convolution layer with a regression output.
 
-The input is the target image ($I_t$) and the context images ($I_S$). The expected output is one or more 6 DoF arrays, which represents the ego-motion (Transformation matrices - for all the robotics geeks out there) from each context image to the target image.
+The input is the target image ($$I_t$$) and the context images ($$I_S$$). The expected output is one or more 6 DoF arrays, which represents the ego-motion (Transformation matrices - for all the robotics geeks out there) from each context image to the target image.
 
 # View Synthesis
 
@@ -175,9 +175,9 @@ Now that we have all the ingredients, we proceed to view synthesis and the loss 
 
 View synthesis basically takes the depth map from PackNet, the target image, context frames, their respective transformations from PoseNet and camera parameters as input.
 
-Henceforth what view-synth is trying to do, is reconstruct the target image using the context images. This is done by moving the context frame to the target frame using the output $T$ from PoseNet, then sample corresponding points between the target and context frames from the context frame.
+Henceforth what view-synth is trying to do, is reconstruct the target image using the context images. This is done by moving the context frame to the target frame using the output $$T$$ from PoseNet, then sample corresponding points between the target and context frames from the context frame.
 
-Corresponding points are found by projecting a coordinate from target frame to a 3D space using the depth values from $\hat D_t$ and reprojecting it back onto the context frame. This would give us it's corresponding pixel location in the context frames which is known. So now we just sample the rgb values from the context frames and recontruct the target frame. By doing this, we introduce geometric contraints on the predictions, which introduces the prior that is needed to start self supervised learning. The graphic above tries to explain exactly this.
+Corresponding points are found by projecting a coordinate from target frame to a 3D space using the depth values from $$\hat D_t$$ and reprojecting it back onto the context frame. This would give us it's corresponding pixel location in the context frames which is known. So now we just sample the rgb values from the context frames and recontruct the target frame. By doing this, we introduce geometric contraints on the predictions, which introduces the prior that is needed to start self supervised learning. The graphic above tries to explain exactly this.
 
 This type of view synthesis was proposed and well explained by [Tinghui Zhou,
 Matthew Brown et al.](https://openaccess.thecvf.com/content_cvpr_2017/papers/Zhou_Unsupervised_Learning_of_CVPR_2017_paper.pdf). Going through this paper also helped me understand what was actually going on.
@@ -199,7 +199,7 @@ Another important aspect of the paper was the loss function. Authors propose a s
 
 </p>
 
-The authors define $L_p$ as the photometric loss term,
+The authors define $$L_p$$ as the photometric loss term,
 
 <p style="text-align: center;">
 
@@ -231,9 +231,9 @@ The objective function is also a combination of different loss terms, masks and 
 
 </p>
 
-Intuition behind this mask ($M_p$) is, if the minimum loss for the warped image itself is more than the loss from the unwarped source image with respect to the target frame, it means that that specific pixel is static. And these pixels are masked out.
+Intuition behind this mask ($$M_p$$) is, if the minimum loss for the warped image itself is more than the loss from the unwarped source image with respect to the target frame, it means that that specific pixel is static. And these pixels are masked out.
 
-$M_t$ is a binary mask that masks out any depth values that are out of bounds. Generally, we have a range within which the model is expected to predict.
+$$M_t$$ is a binary mask that masks out any depth values that are out of bounds. Generally, we have a range within which the model is expected to predict.
 
 The final term is regularization term to avoid very high values of depth in the predictions.
 
